@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Brève — Radio Anar
+   Liens : soulignement rouge épais, collé au texte (style presse/blog)
+   ========================================================================== */
+
+:root {
+	--breve-bg: #16140f;
+	--breve-card-bg: #1d1a13;
+	--breve-text: #f2efe6;
+	--breve-muted: #94907f;
+	--breve-accent: #e2231a;
+	--breve-line: rgba(242, 239, 230, 0.12);
+
+	--breve-font-display: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+	--breve-font-body: "Iowan Old Style", "Georgia", "Times New Roman", serif;
+	--breve-font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+	--breve-max-width: 640px;
+}
+
+/* ---- Liens : règle globale du gabarit brève ---------------------------- */
+
+.breve-body a,
+.breve-source a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: var(--breve-accent);
+	text-decoration-thickness: 3px;
+	text-underline-offset: 0;
+	text-decoration-skip-ink: none;
+	transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.breve-body a:hover,
+.breve-source a:hover {
+	color: var(--breve-accent);
+}
+
+.breve-body a:focus-visible,
+.breve-source a:focus-visible {
+	outline: 2px solid var(--breve-accent);
+	outline-offset: 3px;
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL
+   ========================================================================== */
+
+.breve-layout {
+	background: var(--breve-bg);
+	padding: 40px 0 80px;
+}
+
+.breve-reading-card {
+	max-width: var(--breve-max-width);
+	margin: 0 auto;
+	background: var(--breve-card-bg);
+	border: 1px solid var(--breve-line);
+	border-radius: 4px;
+	padding: 32px 40px;
+}
+
+/* ---- Titre -------------------------------------------------------------- */
+
+.breve-hero-title {
+	font-family: var(--breve-font-ui);
+	font-weight: 800;
+	font-size: clamp(22px, 3vw, 30px);
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--breve-text);
+	margin: 0 0 20px;
+}
+
+/* ==========================================================================
+   CORPS DE LA BRÈVE
+   ========================================================================== */
+
+.breve-body {
+	font-family: var(--breve-font-body);
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--breve-text);
+}
+
+.breve-body p {
+	margin: 0 0 16px;
+}
+
+.breve-body p:last-child {
+	margin-bottom: 0;
+}
+
+.breve-body blockquote {
+	margin: 20px 0;
+	padding: 4px 0 4px 20px;
+	border-left: 3px solid var(--breve-accent);
+	font-style: italic;
+	color: var(--breve-muted);
+}
+
+.breve-body ul,
+.breve-body ol {
+	margin: 0 0 16px;
+	padding-left: 22px;
+}
+
+.breve-body li {
+	margin-bottom: 6px;
+}
+
+.breve-body img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 20px 0;
+	border-radius: 2px;
+}
+
+.breve-body code {
+	font-family: var(--breve-font-display);
+	font-size: 0.9em;
+	background: var(--breve-bg);
+	border: 1px solid var(--breve-line);
+	padding: 2px 6px;
+	border-radius: 3px;
+}
+
+/* ---- Lien source --------------------------------------------------------- */
+
+.breve-source {
+	font-family: var(--breve-font-ui);
+	font-size: 13px;
+	color: var(--breve-muted);
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid var(--breve-line);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+	.breve-reading-card {
+		padding: 24px 20px;
+	}
+
+	.breve-body {
+		font-size: 16px;
+	}
+}

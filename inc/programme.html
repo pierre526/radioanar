@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/scheduler.css}?[(#CACHE)]">
+<div class="rp-container">
+    <h2 class="programme-title">Programme</h2>
+    <div id="programme-scheduler"></div>
+</div>
+<script>
+window.PROGRAMME_DATA = [
+<BOUCLE_programme(ARTICLES){id_rubrique=5}{par titre}>
+    {
+        "titre": "[(#TITRE|supprimer_tags|texte_script)]",
+        "heure": "[(#CHAPO*|supprimer_tags|texte_script)]",
+        "description": "[(#DESCRIPTIF|supprimer_tags|texte_script)]",
+        "image": "[(#LOGO_ARTICLE_NORMAL|extraire_attribut{src}|texte_script)]",
+        "url": "#URL_ARTICLE",
+        "genre": "<BOUCLE_genre(MOTS){id_article}{type=Genre}{0,1}>[(#TITRE|supprimer_tags|texte_script)]</BOUCLE_genre>",
+        "jours": [<BOUCLE_jours(MOTS){id_article}{type=Jours}>"[(#TITRE|strtolower|texte_script)]",</BOUCLE_jours>]
+    },
+</BOUCLE_programme>
+];
+</script>
+<script src="#CHEMIN{assets/js/scheduler.js}"></script>

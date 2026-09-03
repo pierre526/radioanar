@@ -1,0 +1,29 @@
+<script src="#CHEMIN{assets/js/mobile.js}?v=2"></script>
+
+<link rel="stylesheet" href="#CHEMIN{assets/css/header.css}">
+<link rel="icon" type="image/png" sizes="32x32" href="#CHEMIN{assets/img/logo_bannieres/logo.png}">
+<header>
+  <nav class="nav" aria-label="Navigation principale">
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav">
+      <li class="nav-item"><a href="https://radioanar.fm">Accueil</a></li>
+      <li class="nav-item"><a href="#URL_RUBRIQUE{7}">Actus</a></li>
+      <li class="nav-item"><a href="#URL_RUBRIQUE{6}">Podcasts</a></li>
+      <li class="nav-item"><a href="#URL_RUBRIQUE{3}">Ephémérides</a></li>
+      <li class="nav-item"><a href="#URL_ARTICLE{2}">Contact</a></li>
+    </ul>
+    <form class="recherche" role="search" action="#URL_RECHERCHE" method="get">
+      <label for="recherche-input" class="sr-only">Rechercher</label>
+      <input type="text" id="recherche-input" name="recherche" placeholder="Rechercher...">
+      <button type="submit">Rechercher</button>
+    </form>
+  </nav>
+</header>
+<div id="lecteur-radio" class="ajax">
+  <INCLURE{fond=inc/lecteur}{env} />
+</div>
+<script src="#CHEMIN{assets/js/player.js}"></script>

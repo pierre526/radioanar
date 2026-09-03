@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/footer.css}">
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Bloc identité : logo + signature "on air" -->
+        <div class="footer-block footer-identity">
+            [(#LOGO_SITE_SPIP)<img src="#LOGO_SITE_SPIP" alt="#NOM_SITE_SPIP" class="footer-logo">]
+            <p class="footer-sitename">#NOM_SITE_SPIP</p>
+            <p class="footer-onair">
+                <span class="onair-dot" aria-hidden="true"></span>
+                <span class="footer-bars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </span>
+                <span class="footer-onair-text">À l'antenne depuis [(#VAL{2026})]</span>
+            </p>
+        </div>
+        <!-- Bloc navigation -->
+        <div class="footer-block footer-nav-block">
+            <p class="footer-title">Le site</p>
+            <ul class="footer-nav">
+                <li><a href="#URL_ARTICLE{3}">Crédits</a></li>
+                <li><a href="#URL_ARTICLE{4}">Mentions légales</a></li>
+                <li><a href="#URL_ARTICLE{5}">Confidentialité</a></li>
+            </ul>
+        </div>
+        <!-- Bloc réseaux sociaux -->
+        <div class="footer-block footer-social-block">
+            <p class="footer-title">Nous suivre</p>
+            <ul class="footer-social">
+                <li>
+                    <a rel="me" href="https://kolektiva.social/@radioanar" target="_blank" rel="noopener noreferrer" aria-label="Mastodon">
+                        <img src="#CHEMIN{assets/img/rs/mastodon.png}" alt="Mastodon" loading="lazy">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.threads.net/@radio.anar72" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                        <img src="#CHEMIN{assets/img/rs/threadslink.png}" alt="Threads" loading="lazy">
+
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://bsky.app/profile/radioanar.fm" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+                        <img src="#CHEMIN{assets/img/rs/bsky.png}" alt="Bluesky" loading="lazy">
+                    </a>
+                </li>
+            </ul>
+        </div>
+		<div class="footer-block footer-text-block">
+			<p class="footer-title">Radio Anar</p>
+			<img src="#CHEMIN{assets/img/creative-commons/Cc_by-nc-nd_icon.png}" alt="Creative Commons BY-NC-ND" class="footer-cc-logo">
+		</div>
+    </div>
+</footer>

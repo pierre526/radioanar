@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/article.css}">
+<INCLURE{fond=inc/header}{env} />
+<BOUCLE_article(ARTICLES){id_article}>
+<!-- LAYOUT PRINCIPAL -->
+<div class="article-layout">
+    <!-- COLONNE LECTURE -->
+    <div class="article-reading-card">
+        <!-- Titre -->
+        <h1 class="article-hero-title #EDIT{titre}">[(#TITRE)]</h1>
+
+        <!-- Sous-titre (affiché uniquement s'il est renseigné) -->
+        [<p class="article-hero-subtitle #EDIT{soustitre}">(#SOUSTITRE)</p>]
+
+        <!-- Chapô -->
+        [<p class="article-hero-chapo #EDIT{chapo}">(#CHAPO|textebrut)</p>]
+
+        <!-- Image de l'article (non éditable via crayon) -->
+        [<div class="article-cover">(#LOGO_ARTICLE_NORMAL|image_reduire{800,9999}|inserer_attribut{class,article-cover-img}|inserer_attribut{alt,[(#TITRE|textebrut)]}|inserer_attribut{loading,eager})</div>]
+
+        <div class="article-body #EDIT{texte}">
+            [(#TEXTE)]
+        </div>
+    </div>
+</div>
+</BOUCLE_article>
+<INCLURE{fond=inc/footer}{env} />

@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Rubrique — Radio Anar
+   Cohérent avec article/header/footer : papier, encre, rouge signal
+   ========================================================================== */
+
+:root {
+	--rub-paper: #ede6d6;
+	--rub-paper-raised: #e3dac4;
+	--rub-ink: #191712;
+	--rub-muted: #5b5648;
+	--rub-accent: #e8432c;
+	--rub-tape: #d9b23c;
+	--rub-line: rgba(25, 23, 18, 0.16);
+
+	--rub-font-display: "Archivo Black", "Arial Black", sans-serif;
+	--rub-font-body: "Piazzolla", Georgia, "Iowan Old Style", serif;
+	--rub-font-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.rubrique-layout {
+	padding: 40px 24px 80px;
+	background: var(--rub-paper);
+	color: var(--rub-ink);
+}
+
+/* ---- Fil d'Ariane ------------------------------------------------------ */
+
+.rubrique-breadcrumb {
+	font-family: var(--rub-font-mono);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--rub-muted);
+	margin: 0 0 20px;
+}
+
+.rubrique-breadcrumb a {
+	color: var(--rub-muted);
+	text-decoration: underline;
+	text-decoration-color: var(--rub-accent);
+}
+
+.rubrique-breadcrumb__sep {
+	opacity: 0.5;
+	margin: 0 4px;
+}
+
+.rubrique-breadcrumb__current {
+	color: var(--rub-ink);
+}
+
+/* ---- Titre / descriptif ------------------------------------------------- */
+
+.rubrique-title {
+	font-family: var(--rub-font-display);
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: clamp(28px, 4.5vw, 44px);
+	line-height: 1.05;
+	margin: 0 0 12px;
+}
+
+.rubrique-descriptif {
+	font-family: var(--rub-font-body);
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--rub-muted);
+	max-width: 680px;
+	margin: 0 0 32px;
+}
+
+/* ---- Sous-rubriques ------------------------------------------------------- */
+
+.rubrique-subnav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 36px;
+}
+
+.rubrique-subnav-item {
+	font-family: var(--rub-font-mono);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--rub-ink);
+	background: var(--rub-paper-raised);
+	border: 1px solid var(--rub-ink);
+	padding: 8px 14px;
+	text-decoration: none;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.rubrique-subnav-item:hover {
+	background: var(--rub-accent);
+	border-color: var(--rub-accent);
+	color: var(--rub-paper);
+}
+
+/* ---- Grille d'articles ------------------------------------------------------ */
+
+.rubrique-articles {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 28px;
+}
+
+.rubrique-card {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: inherit;
+	background: var(--rub-paper-raised);
+	border: 1px solid var(--rub-line);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rubrique-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 14px rgba(25, 23, 18, 0.18);
+}
+
+.rubrique-card-img {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	border-bottom: 1px solid var(--rub-line);
+}
+
+.rubrique-card-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.rubrique-card-body {
+	padding: 16px 18px 20px;
+}
+
+.rubrique-card-date {
+	font-family: var(--rub-font-mono);
+	font-size: 11px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--rub-accent);
+}
+
+.rubrique-card-title {
+	font-family: var(--rub-font-body);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.3;
+	margin: 6px 0 8px;
+}
+
+.rubrique-card-desc {
+	font-family: var(--rub-font-body);
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--rub-muted);
+	margin: 0;
+}
+
+/* ---- Vide / pagination ------------------------------------------------------ */
+
+.rubrique-empty {
+	font-family: var(--rub-font-body);
+	font-style: italic;
+	color: var(--rub-muted);
+	padding: 40px 0;
+}
+
+.rubrique-pagination {
+	margin-top: 48px;
+	font-family: var(--rub-font-mono);
+	font-size: 13px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.rubrique-pagination a {
+	color: var(--rub-ink);
+	text-decoration: underline;
+	text-decoration-color: var(--rub-accent);
+}
+
+/* ---- Responsive ------------------------------------------------------------- */
+
+@media (max-width: 560px) {
+	.rubrique-layout {
+		padding: 28px 20px 60px;
+	}
+
+	.rubrique-articles {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}

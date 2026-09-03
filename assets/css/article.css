@@ -1,0 +1,388 @@
+/* ==========================================================================
+   Article — Radio Anar
+   Direction : fanzine radio pirate — papier, scotch, cadran de fréquence
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Piazzolla:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+	--paper: #ede6d6;
+	--paper-raised: #e3dac4;
+	--ink: #191712;
+	--ink-soft: #5b5648;
+	--signal-red: #e8432c;
+	--signal-blue: #2f5d8a;
+	--tape: #d9b23c;
+	--line: rgba(25, 23, 18, 0.16);
+
+	--article-font-display: "Archivo Black", "Arial Black", sans-serif;
+	--article-font-body: "Piazzolla", Georgia, "Iowan Old Style", serif;
+	--article-font-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+	--article-max-width: 720px;
+}
+
+.rp-container {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* ---- Liens : règle globale du gabarit article ------------------------- */
+
+.article-hero a,
+.article-breadcrumb a,
+.article-body a,
+.article-hero-author a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: var(--signal-red);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
+	text-decoration-skip-ink: none;
+	transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.article-hero a:hover,
+.article-breadcrumb a:hover,
+.article-body a:hover,
+.article-hero-author a:hover {
+	color: var(--signal-red);
+}
+
+.article-hero a:focus-visible,
+.article-breadcrumb a:focus-visible,
+.article-body a:focus-visible,
+.article-hero-author a:focus-visible {
+	outline: 2px solid var(--signal-red);
+	outline-offset: 3px;
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.article-hero {
+	background: var(--paper);
+	color: var(--ink);
+	padding: 48px 0 28px;
+}
+
+/* ---- Cadran de fréquence : séparateur signature ------------------------ */
+
+.article-hero::after,
+.article-chapo-sep {
+	content: "";
+	display: block;
+	height: 6px;
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--ink) 0,
+		var(--ink) 2px,
+		transparent 2px,
+		transparent 10px
+	);
+	opacity: 0.35;
+	margin-top: 28px;
+}
+
+.article-chapo-sep {
+	width: 100%;
+	margin: 24px 0;
+}
+
+/* ---- Fil d'Ariane ------------------------------------------------------ */
+
+.article-breadcrumb {
+	font-family: var(--article-font-mono);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink-soft);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 22px;
+}
+
+.article-breadcrumb a {
+	text-decoration-thickness: 1px;
+}
+
+.article-breadcrumb__sep {
+	color: var(--ink-soft);
+	opacity: 0.5;
+}
+
+/* ---- Méta date + auteur ------------------------------------------------ */
+
+.article-hero-meta {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: var(--article-font-mono);
+	font-size: 12px;
+	color: var(--ink-soft);
+	margin-bottom: 14px;
+}
+
+.article-hero-date {
+	background: var(--signal-red);
+	color: var(--paper);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 3px 8px;
+	transform: rotate(-1deg);
+	display: inline-block;
+}
+
+.article-hero-author {
+	position: relative;
+	padding-left: 12px;
+}
+
+.article-hero-author::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	background: var(--ink-soft);
+}
+
+/* ---- Titre / sous-titre / chapô ---------------------------------------- */
+
+.article-hero-title {
+	font-family: var(--article-font-display);
+	font-weight: 400;
+	font-size: clamp(32px, 5vw, 52px);
+	line-height: 1.05;
+	letter-spacing: -0.005em;
+	text-transform: uppercase;
+	margin: 0 0 14px;
+	max-width: 900px;
+}
+
+.article-hero-subtitle {
+	font-family: var(--article-font-body);
+	font-style: italic;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 1.5;
+	color: var(--ink-soft);
+	margin: 0 0 16px;
+	max-width: 720px;
+}
+
+.article-hero-chapo {
+	font-family: var(--article-font-body);
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--ink);
+	margin: 0;
+	max-width: 680px;
+	background: var(--paper-raised);
+	border-left: 4px solid var(--signal-blue);
+	padding: 14px 18px;
+}
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL
+   ========================================================================== */
+
+.article-layout {
+	background: var(--paper);
+	padding: 8px 0 80px;
+}
+
+.article-reading-card {
+	max-width: var(--article-max-width);
+	margin: 0 auto;
+	background: var(--paper);
+	padding: 0;
+}
+
+.article-reading-card .article-hero-title,
+.article-reading-card .article-hero-subtitle,
+.article-reading-card .article-hero-chapo {
+	max-width: none;
+}
+
+.article-reading-card .article-hero-chapo {
+	margin-bottom: 32px;
+}
+
+/* ---- Image de couverture : effet "collé au mur" ------------------------ */
+
+.article-cover {
+	position: relative;
+	margin: 8px 0 36px;
+}
+
+.article-cover-img {
+	display: block;
+	width: 100%;
+	height: auto;
+	filter: sepia(12%) contrast(1.02);
+}
+
+/* Bouts de scotch en coins, façon flyer punk collé */
+.article-cover::before,
+.article-cover::after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	width: 64px;
+	height: 26px;
+	background: var(--tape);
+	opacity: 0.75;
+	box-shadow: 0 1px 2px rgba(25, 23, 18, 0.25);
+}
+
+.article-cover::before {
+	left: 24px;
+	transform: rotate(-6deg);
+}
+
+.article-cover::after {
+	right: 24px;
+	transform: rotate(5deg);
+}
+
+/* ==========================================================================
+   CORPS DE L'ARTICLE
+   ========================================================================== */
+
+.article-body {
+	font-family: var(--article-font-body);
+	font-size: 18px;
+	line-height: 1.75;
+	color: var(--ink);
+}
+
+.article-body p {
+	margin: 0 0 20px;
+}
+
+.article-body h2 {
+	font-family: var(--article-font-display);
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 24px;
+	line-height: 1.25;
+	margin: 44px 0 16px;
+}
+
+.article-body h3 {
+	font-family: var(--article-font-mono);
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--signal-blue);
+	margin: 32px 0 12px;
+}
+
+.article-body blockquote {
+	margin: 28px 0;
+	padding: 4px 0 4px 20px;
+	border-left: 3px solid var(--signal-red);
+	font-style: italic;
+	color: var(--ink-soft);
+}
+
+.article-body ul,
+.article-body ol {
+	margin: 0 0 20px;
+	padding-left: 24px;
+}
+
+.article-body li {
+	margin-bottom: 8px;
+}
+
+.article-body img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 28px 0;
+}
+
+.article-body hr {
+	border: none;
+	height: 6px;
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--ink) 0,
+		var(--ink) 2px,
+		transparent 2px,
+		transparent 10px
+	);
+	opacity: 0.3;
+	margin: 40px 0;
+}
+
+.article-body code {
+	font-family: var(--article-font-mono);
+	font-size: 0.85em;
+	background: var(--paper-raised);
+	border: 1px solid var(--line);
+	padding: 2px 6px;
+	border-radius: 2px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITÉ / MOUVEMENT RÉDUIT
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+	.article-hero {
+		padding: 36px 0 20px;
+	}
+
+	.article-body {
+		font-size: 16.5px;
+	}
+
+	.article-cover::before,
+	.article-cover::after {
+		width: 48px;
+		height: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.article-hero-meta {
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.article-hero-author {
+		padding-left: 0;
+	}
+
+	.article-hero-author::before {
+		display: none;
+	}
+
+	.article-hero-title {
+		font-size: 28px;
+	}
+}

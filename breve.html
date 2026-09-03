@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/assets/css/breve.css">
+
+<INCLURE{fond=inc/header}{env} />
+
+<BOUCLE_breve(BREVES){id_breve}>
+<!-- LAYOUT PRINCIPAL -->
+<div class="breve-layout">
+    <!-- COLONNE LECTURE -->
+    <div class="breve-reading-card">
+        <!-- Titre -->
+        <h1 class="breve-hero-title #EDIT{titre}">[(#TITRE)]</h1>
+        <!-- Texte -->
+        <div class="breve-body #EDIT{texte}">
+            [(#TEXTE)]
+        </div>
+        <!-- Lien source (affiché uniquement s'il est renseigné) -->
+        [(#LIEN|?{<p class="breve-source"><a href="[(#LIEN)]" target="_blank" rel="noopener">[(#LIEN_TITRE|sinon{En savoir plus})]</a></p>,})]
+    </div>
+</div>
+</BOUCLE_breve>
+
+<INCLURE{fond=inc/footer}{env} />

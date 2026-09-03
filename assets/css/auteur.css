@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Auteur — Radio Anar
+   Cohérent avec rubrique/article/header/footer : papier, encre, rouge signal
+   ========================================================================== */
+
+:root {
+	--auteur-paper: #ede6d6;
+	--auteur-paper-raised: #e3dac4;
+	--auteur-ink: #191712;
+	--auteur-muted: #5b5648;
+	--auteur-accent: #e8432c;
+	--auteur-line: rgba(25, 23, 18, 0.16);
+
+	--auteur-font-display: "Archivo Black", "Arial Black", sans-serif;
+	--auteur-font-body: "Piazzolla", Georgia, "Iowan Old Style", serif;
+	--auteur-font-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.auteur-layout {
+	padding: 40px 24px 80px;
+	background: var(--auteur-paper);
+	color: var(--auteur-ink);
+}
+
+/* ---- Fil d'Ariane ------------------------------------------------------ */
+
+.auteur-breadcrumb {
+	font-family: var(--auteur-font-mono);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--auteur-muted);
+	margin: 0 0 24px;
+}
+
+.auteur-breadcrumb a {
+	color: var(--auteur-muted);
+	text-decoration: underline;
+	text-decoration-color: var(--auteur-accent);
+}
+
+.auteur-breadcrumb__sep {
+	opacity: 0.5;
+	margin: 0 4px;
+}
+
+.auteur-breadcrumb__current {
+	color: var(--auteur-ink);
+}
+
+/* ---- En-tête -------------------------------------------------------------- */
+
+.auteur-header {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.auteur-avatar {
+	flex-shrink: 0;
+	width: 84px;
+	height: 84px;
+	border: 1px solid var(--auteur-ink);
+	overflow: hidden;
+}
+
+.auteur-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.auteur-avatar--empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--auteur-accent);
+	color: var(--auteur-paper);
+	font-family: var(--auteur-font-display);
+	font-size: 28px;
+}
+
+.auteur-title {
+	font-family: var(--auteur-font-display);
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: clamp(24px, 3.5vw, 34px);
+	line-height: 1.1;
+	margin: 0 0 6px;
+}
+
+.auteur-www {
+	font-family: var(--auteur-font-mono);
+	font-size: 12px;
+	color: var(--auteur-muted);
+	text-decoration: underline;
+	text-decoration-color: var(--auteur-accent);
+	word-break: break-all;
+}
+
+/* ---- Bio -------------------------------------------------------------------- */
+
+.auteur-bio {
+	font-family: var(--auteur-font-body);
+	font-size: 16px;
+	line-height: 1.65;
+	color: var(--auteur-ink);
+	max-width: 680px;
+	background: var(--auteur-paper-raised);
+	border-left: 4px solid var(--auteur-accent);
+	padding: 14px 18px;
+	margin-bottom: 40px;
+}
+
+/* ---- Articles --------------------------------------------------------------- */
+
+.auteur-articles-title {
+	font-family: var(--auteur-font-mono);
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--auteur-muted);
+	margin: 0 0 20px;
+}
+
+.auteur-articles {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 28px;
+}
+
+.auteur-card {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: inherit;
+	background: var(--auteur-paper-raised);
+	border: 1px solid var(--auteur-line);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auteur-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 14px rgba(25, 23, 18, 0.18);
+}
+
+.auteur-card-img {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	border-bottom: 1px solid var(--auteur-line);
+}
+
+.auteur-card-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.auteur-card-body {
+	padding: 16px 18px 20px;
+}
+
+.auteur-card-date {
+	font-family: var(--auteur-font-mono);
+	font-size: 11px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--auteur-accent);
+}
+
+.auteur-card-title {
+	font-family: var(--auteur-font-body);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.3;
+	margin: 6px 0 8px;
+}
+
+.auteur-card-desc {
+	font-family: var(--auteur-font-body);
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--auteur-muted);
+	margin: 0;
+}
+
+/* ---- Vide / pagination ------------------------------------------------------- */
+
+.auteur-empty {
+	font-family: var(--auteur-font-body);
+	font-style: italic;
+	color: var(--auteur-muted);
+	padding: 40px 0;
+}
+
+.auteur-pagination {
+	margin-top: 48px;
+	font-family: var(--auteur-font-mono);
+	font-size: 13px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.auteur-pagination a {
+	color: var(--auteur-ink);
+	text-decoration: underline;
+	text-decoration-color: var(--auteur-accent);
+}
+
+/* ---- Responsive ------------------------------------------------------------- */
+
+@media (max-width: 560px) {
+	.auteur-layout {
+		padding: 28px 20px 60px;
+	}
+
+	.auteur-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.auteur-articles {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}

@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/auteur.css}?[(#CACHE)]">
+
+<BOUCLE_auteur(AUTEURS){id_auteur}>
+<div class="rp-container auteur-layout">
+
+	<!-- Fil d'Ariane -->
+	<p class="auteur-breadcrumb">
+		<a href="#URL_SITE_SPIP">Accueil</a>
+		<span class="auteur-breadcrumb__sep">/</span>
+		<span class="auteur-breadcrumb__current">#NOM</span>
+	</p>
+
+	<!-- En-tête auteur -->
+	<div class="auteur-header">
+		[(#LOGO_AUTEUR_NORMAL|?{<div class="auteur-avatar">[(#LOGO_AUTEUR_NORMAL|image_reduire{120,120})]</div>,<div class="auteur-avatar auteur-avatar--empty">#INITIALE</div>})]
+		<div class="auteur-header-body">
+			<h1 class="auteur-title">#NOM</h1>
+			[(#WWW|?{<a href="#WWW" class="auteur-www" target="_blank" rel="noopener noreferrer">#WWW</a>,})]
+		</div>
+	</div>
+
+	[(#BIO|?{<div class="auteur-bio">#BIO</div>,})]
+
+	<!-- Articles de l'auteur -->
+	<B_articles_auteur>
+	<h2 class="auteur-articles-title">Ses articles</h2>
+	<div class="auteur-articles">
+		<BOUCLE_articles_auteur(ARTICLES){id_auteur}{par date}{inverse}{pagination 10}>
+		<a href="#URL_ARTICLE" class="auteur-card">
+			[(#LOGO_ARTICLE_NORMAL|?{<div class="auteur-card-img">[(#LOGO_ARTICLE_NORMAL|image_reduire{400,400})]</div>,})]
+			<div class="auteur-card-body">
+				<span class="auteur-card-date">[(#DATE|affdate_court)]</span>
+				<h3 class="auteur-card-title">#TITRE</h3>
+				[(#DESCRIPTIF|?{<p class="auteur-card-desc">[(#DESCRIPTIF|couper{140})]</p>,})]
+			</div>
+		</a>
+		</BOUCLE_articles_auteur>
+	</div>
+
+	<div class="auteur-pagination">
+		#PAGINATION
+	</div>
+	</B_articles_auteur>
+
+</div>
+</BOUCLE_auteur>

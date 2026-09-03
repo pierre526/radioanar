@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Lecteur radio — Radio Anar
+   Bandeau de transmission pleine largeur : papier + scotch + rouge signal
+   ========================================================================== */
+
+.player {
+	--player-paper: #ede6d6;
+	--player-ink: #191712;
+	--player-signal-red: #e8432c;
+	--player-tape: #d9b23c;
+	--player-line: rgba(25, 23, 18, 0.18);
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	background: var(--player-paper);
+	color: var(--player-ink);
+	padding: 16px 32px;
+	font-family: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	border-top: 1px solid var(--player-line);
+	border-bottom: 3px solid var(--player-ink);
+}
+
+/* Scotch aux coins, cohérent avec la cover de l'article */
+.player::before,
+.player::after {
+	content: "";
+	position: absolute;
+	top: -9px;
+	width: 46px;
+	height: 18px;
+	background: var(--player-tape);
+	opacity: 0.85;
+}
+
+.player::before {
+	left: 28px;
+	transform: rotate(-7deg);
+}
+
+.player::after {
+	right: 28px;
+	transform: rotate(6deg);
+}
+
+/* ---- Bouton play/pause -------------------------------------------------- */
+
+#radio-playpause {
+	flex-shrink: 0;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	border: none;
+	background: var(--player-signal-red);
+	color: var(--player-paper);
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.15s ease;
+}
+
+#radio-playpause:hover {
+	transform: scale(1.08);
+}
+
+#radio-playpause:focus-visible {
+	outline: 2px solid var(--player-ink);
+	outline-offset: 2px;
+}
+
+/* ---- Titre / statut ------------------------------------------------------ */
+
+#radio-titre {
+	flex: 1;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#radio-titre::before {
+	content: "● ";
+	color: var(--player-signal-red);
+}
+
+/* ---- Volume ---------------------------------------------------------------- */
+
+#radio-volume {
+	width: 140px;
+	accent-color: var(--player-signal-red);
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 640px) {
+	.player {
+		gap: 14px;
+		padding: 12px 20px;
+	}
+
+	.player::before,
+	.player::after {
+		width: 32px;
+		height: 14px;
+	}
+
+	#radio-titre {
+		font-size: 13px;
+	}
+
+	#radio-volume {
+		width: 80px;
+	}
+}

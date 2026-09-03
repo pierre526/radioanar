@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/rubrique.css}?[(#CACHE)]">
+
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+<div class="rp-container rubrique-layout">
+
+	<!-- Fil d'Ariane -->
+	<p class="rubrique-breadcrumb">
+		<a href="#URL_SITE_SPIP">Accueil</a>
+		[ (#PARENT) <span class="rubrique-breadcrumb__sep">/</span> ]
+		<span class="rubrique-breadcrumb__current">#TITRE</span>
+	</p>
+
+	<h1 class="rubrique-title">#TITRE</h1>
+
+	<!-- Sous-rubriques, si présentes -->
+	<BOUCLE_sousrubriques(RUBRIQUES){id_parent}{par titre}>
+	<BOUCLE_sousrubriques_liste(RUBRIQUES){id_parent}{par titre}{0,1}>
+	<div class="rubrique-subnav">
+		<BOUCLE_sousrub(RUBRIQUES){id_parent}{par titre}>
+		<a href="#URL_RUBRIQUE" class="rubrique-subnav-item">#TITRE</a>
+		</BOUCLE_sousrub>
+	</div>
+	</BOUCLE_sousrubriques_liste>
+	</BOUCLE_sousrubriques>
+
+	<!-- Liste des articles -->
+	<B_articles>
+	<div class="rubrique-articles">
+		<BOUCLE_articles(ARTICLES){id_rubrique}{par date}{inverse}{pagination 10}>
+		<a href="#URL_ARTICLE" class="rubrique-card">
+			[(#LOGO_ARTICLE_NORMAL|?{<div class="rubrique-card-img">[(#LOGO_ARTICLE_NORMAL|image_reduire{400,400})]</div>,})]
+			<div class="rubrique-card-body">
+				<span class="rubrique-card-date">[(#DATE|affdate_court)]</span>
+				<h2 class="rubrique-card-title">#TITRE</h2>
+				[(#DESCRIPTIF|?{<p class="rubrique-card-desc">[(#DESCRIPTIF|couper{140})]</p>,})]
+			</div>
+		</a>
+		</BOUCLE_articles>
+	</div>
+
+	<div class="rubrique-pagination">
+		#PAGINATION
+	</div>
+	</B_articles>
+
+</div>
+</BOUCLE_rubrique>

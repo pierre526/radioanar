@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Footer — Radio Anar
+   Signature: pulsing "on air" indicator + signal bars (footer-identity)
+   Direction : fanzine radio pirate — papier, scotch, cadran de fréquence
+   (cohérent avec article.css / header.css)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+	--footer-bg: #ede6d6;
+	--footer-bg-raised: #e3dac4;
+	--footer-text: #191712;
+	--footer-muted: #5b5648;
+	--footer-accent: #e8432c;
+	--footer-tape: #d9b23c;
+	--footer-line: rgba(25, 23, 18, 0.16);
+
+	--footer-font-display: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	--footer-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.footer {
+	background: var(--footer-bg);
+	color: var(--footer-text);
+	border-top: 3px solid var(--footer-text);
+	font-family: var(--footer-font-body);
+}
+
+/* Filet façon cadran de fréquence, cohérent avec header/article */
+.footer::before {
+	content: "";
+	display: block;
+	height: 4px;
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--footer-text) 0,
+		var(--footer-text) 2px,
+		transparent 2px,
+		transparent 10px
+	);
+	opacity: 0.25;
+}
+
+.footer-container {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 56px 24px 32px;
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+	gap: 40px;
+}
+
+.footer-block {
+	min-width: 0;
+}
+
+.footer-title {
+	font-family: var(--footer-font-display);
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--footer-muted);
+	margin: 0 0 16px;
+}
+
+/* ---- Identité / signature ------------------------------------------- */
+
+.footer-identity {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.footer-logo {
+	height: 36px;
+	width: auto;
+	display: block;
+}
+
+.footer-sitename {
+	font-family: var(--footer-font-display);
+	font-weight: 700;
+	font-size: 18px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.footer-onair {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 4px 0 0;
+	color: var(--footer-muted);
+	font-family: var(--footer-font-display);
+	font-size: 11px;
+	letter-spacing: 0.04em;
+}
+
+.onair-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--footer-accent);
+	box-shadow: 0 0 0 0 rgba(232, 67, 44, 0.6);
+	animation: onair-pulse 2.4s ease-out infinite;
+	flex-shrink: 0;
+}
+
+.footer-bars {
+	display: inline-flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 12px;
+}
+
+.footer-bars span {
+	width: 2px;
+	background: var(--footer-accent);
+	display: inline-block;
+	border-radius: 1px;
+	animation: signal-bar 1.6s ease-in-out infinite;
+}
+
+.footer-bars span:nth-child(1) { height: 30%; animation-delay: -1.1s; }
+.footer-bars span:nth-child(2) { height: 70%; animation-delay: -0.7s; }
+.footer-bars span:nth-child(3) { height: 100%; animation-delay: -1.4s; }
+.footer-bars span:nth-child(4) { height: 50%; animation-delay: -0.3s; }
+.footer-bars span:nth-child(5) { height: 80%; animation-delay: -0.9s; }
+
+@keyframes onair-pulse {
+	0% { box-shadow: 0 0 0 0 rgba(232, 67, 44, 0.55); }
+	70% { box-shadow: 0 0 0 6px rgba(232, 67, 44, 0); }
+	100% { box-shadow: 0 0 0 0 rgba(232, 67, 44, 0); }
+}
+
+@keyframes signal-bar {
+	0%, 100% { transform: scaleY(0.4); }
+	50% { transform: scaleY(1); }
+}
+
+/* ---- Navigation ------------------------------------------------------ */
+
+.footer-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.footer-nav a {
+	font-family: var(--footer-font-display);
+	font-weight: 700;
+	font-size: 13px;
+	color: var(--footer-text);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.footer-nav a:hover {
+	color: var(--footer-accent);
+	border-color: var(--footer-accent);
+}
+
+/* ---- Réseaux sociaux --------------------------------------------------- */
+
+.footer-social {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 10px;
+}
+
+.footer-social a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	background: var(--footer-bg-raised);
+	border: 1px solid var(--footer-text);
+	transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.footer-social img {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	filter: brightness(0); /* icônes en noir sur fond clair */
+	transition: filter 0.15s ease;
+}
+
+.footer-social a:hover {
+	background: var(--footer-accent);
+	border-color: var(--footer-accent);
+	transform: translateY(-2px);
+}
+
+.footer-social a:hover img {
+	filter: brightness(0) invert(1); /* icône en blanc au survol, sur fond rouge */
+}
+
+/* ---- Texte libre ------------------------------------------------------ */
+
+.footer-free-text {
+	font-size: 13.5px;
+	line-height: 1.6;
+	color: var(--footer-muted);
+	margin-bottom: 16px;
+}
+
+.footer-free-text p {
+	margin: 0 0 10px;
+}
+
+.footer-cc-logo {
+	height: 28px;
+	width: auto;
+	margin-top: 4px;
+	opacity: 0.85;
+	transition: opacity 0.15s ease;
+}
+
+.footer-cc-logo:hover {
+	opacity: 1;
+}
+
+.footer-copyright {
+	font-size: 11px;
+	color: var(--footer-muted);
+	margin: 0;
+	padding-top: 16px;
+	border-top: 1px solid var(--footer-line);
+}
+
+/* ---- Accessibilité ----------------------------------------------------- */
+
+.footer a:focus-visible,
+.footer-social a:focus-visible {
+	outline: 2px solid var(--footer-accent);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.onair-dot,
+	.footer-bars span {
+		animation: none;
+	}
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+	.footer-container {
+		grid-template-columns: 1fr 1fr;
+		gap: 32px;
+	}
+}
+
+@media (max-width: 560px) {
+	.footer-container {
+		grid-template-columns: 1fr;
+		padding: 40px 20px 28px;
+		gap: 28px;
+	}
+
+	.footer-copyright {
+		margin-top: 4px;
+	}
+}

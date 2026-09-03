@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="#CHEMIN{assets/css/player.css}?[(#CACHE)]">
+<div class="player">
+  <audio id="radio-stream" preload="none">
+    <source src="https://manager.radioanar.fm/listen/radio_anar/radio.mp3" type="audio/mpeg">
+  </audio>
+  <button id="radio-playpause" aria-label="Lecture / Pause">▶</button>
+  <div class="radio-infos">
+    <span id="radio-artiste"></span>
+    <span id="radio-titre">En direct</span>
+  </div>
+  <input type="range" id="radio-volume" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+</div>
+
+<script src="#CHEMIN{assets/js/player.js}?[(#CACHE)]"></script>

@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Header — Radio Anar
+   Structure HTML inchangée : on distingue nav.nav (conteneur) et ul.nav
+   (liste de liens) par le sélecteur de balise, pas seulement la classe.
+   Direction : fanzine radio pirate — papier, scotch, cadran de fréquence
+   (cohérent avec article.css / footer.css)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+	--header-bg: #ede6d6;
+	--header-bg-raised: #e3dac4;
+	--header-text: #191712;
+	--header-muted: #5b5648;
+	--header-accent: #e8432c;
+	--header-tape: #d9b23c;
+	--header-line: rgba(25, 23, 18, 0.16);
+	--header-height: 76px;
+
+	--header-font-display: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	--header-font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+
+/* ---- Conteneur header -------------------------------------------------- */
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: var(--header-bg);
+	border-bottom: 3px solid var(--header-text);
+}
+
+/* Filet façon cadran de fréquence, cohérent avec footer/article */
+header::after {
+	content: "";
+	display: block;
+	height: 4px;
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--header-text) 0,
+		var(--header-text) 2px,
+		transparent 2px,
+		transparent 10px
+	);
+	opacity: 0.25;
+}
+
+nav.nav {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	height: var(--header-height);
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* ---- Logo --------------------------------------------------------------- */
+
+.logo-link {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	position: relative;
+}
+
+.logo {
+	height: 40px;
+	width: auto;
+	display: block;
+}
+
+/* ---- Burger (masqué par défaut, visible en mobile) ----------------------- */
+
+.burger {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 36px;
+	height: 36px;
+	margin-left: auto;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+.burger span {
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: var(--header-text);
+	border-radius: 1px;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.burger[aria-expanded="true"] span:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.burger[aria-expanded="true"] span:nth-child(2) {
+	opacity: 0;
+}
+
+.burger[aria-expanded="true"] span:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Liste de navigation -------------------------------------------------- */
+
+ul.nav {
+	display: flex;
+	align-items: center;
+	gap: 28px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-item a {
+	font-family: var(--header-font-display);
+	font-weight: 700;
+	font-size: 13px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--header-text);
+	text-decoration: none;
+	padding: 8px 0;
+	position: relative;
+}
+
+.nav-item a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 2px;
+	background: var(--header-accent);
+	transition: width 0.2s ease;
+}
+
+.nav-item a:hover::after,
+.nav-item a:focus-visible::after {
+	width: 100%;
+}
+
+.nav-item a:focus-visible {
+	outline: 2px solid var(--header-accent);
+	outline-offset: 4px;
+}
+
+/* ---- Formulaire de recherche ---------------------------------------------- */
+
+.recherche {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	border: 1px solid var(--header-text);
+	border-radius: 0;
+	overflow: hidden;
+	background: var(--header-bg-raised);
+}
+
+.recherche input {
+	font-family: var(--header-font-ui);
+	font-size: 13px;
+	color: var(--header-text);
+	background: transparent;
+	border: none;
+	padding: 8px 14px;
+	width: 160px;
+	outline: none;
+}
+
+.recherche input::placeholder {
+	color: var(--header-muted);
+}
+
+.recherche button[type="submit"] {
+	font-family: var(--header-font-display);
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--header-bg);
+	background: var(--header-accent);
+	border: none;
+	padding: 0 16px;
+	height: 36px;
+	cursor: pointer;
+	transition: filter 0.15s ease;
+}
+
+.recherche button[type="submit"]:hover {
+	filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   RESPONSIVE — menu mobile
+   ========================================================================== */
+
+@media (max-width: 860px) {
+	nav.nav {
+		flex-wrap: wrap;
+		height: auto;
+		padding: 14px 20px;
+	}
+
+	.burger {
+		display: flex;
+		order: 2;
+	}
+
+	.logo-link {
+		order: 1;
+	}
+
+	.recherche {
+		order: 3;
+		margin-left: auto;
+	}
+
+	ul.nav {
+		order: 4;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		gap: 4px;
+		max-height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: max-height 0.25s ease, opacity 0.2s ease;
+	}
+
+	.burger[aria-expanded="true"] ~ ul.nav {
+		max-height: 320px;
+		opacity: 1;
+		margin-top: 12px;
+	}
+
+	.nav-item {
+		width: 100%;
+		border-bottom: 1px solid var(--header-line);
+	}
+
+	.nav-item a {
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+	}
+
+	.nav-item a::after {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.logo {
+		height: 32px;
+	}
+
+	.recherche input {
+		width: 110px;
+	}
+}
+
+#lecteur-radio {
+	height: auto;
+	max-height: none;
+	overflow: visible;
+}
