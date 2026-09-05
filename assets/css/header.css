@@ -206,7 +206,7 @@ form button[type="submit"] {
 	color: var(--header-bg);
 	background: var(--header-accent);
 	border: none;
-	padding: 0 16px;
+	padding: 0px 1em 0px 1em;
 	height: 36px;
 	cursor: pointer;
 	width: 35%;
@@ -240,7 +240,12 @@ form input::placeholder {
    ========================================================================== */
 
 @media (max-width: 860px) {
-	nav.nav {
+	/*nav.nav {
+		flex-wrap: wrap;
+		height: auto;
+		padding: 14px 20px;
+	}*/
+	nav {
 		flex-wrap: wrap;
 		height: auto;
 		padding: 14px 20px;
