@@ -8,7 +8,7 @@
       <img src="/assets/img/logo_bannieres/logo.png" alt="Logo radio anar">
     </figure>-->
     <nav aria-label="Navigation principale">
-      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -24,7 +24,13 @@
     <form class="recherche" role="search" action="#URL_RECHERCHE" method="get">
       <label for="recherche-input" class="sr-only">Rechercher</label>
       <input type="text" id="recherche-input" name="recherche" placeholder="Rechercher...">
-      <button type="submit">Rechercher</button>
+      <button type="submit">
+        <span>Rechercher</span>
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16" y1="16" x2="21" y2="21"></line>
+        </svg>
+      </button>
     </form>
   </div>
   
