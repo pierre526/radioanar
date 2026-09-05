@@ -238,8 +238,26 @@ form input::placeholder {
 /* ==========================================================================
    RESPONSIVE — menu mobile
    ========================================================================== */
-
-@media (max-width: 860px) {
+@media (max-width: 730px) {
+	nav {
+		width:40%;
+	}
+	ul {
+		gap:1em;
+	}
+}
+@media (max-width: 670px) {
+	#navigation-board {
+		width: 94%;
+		justify-content: space-between;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	nav {
+		
+	}
+}
+@media (max-width: 630px) {
 	/*nav.nav {
 		flex-wrap: wrap;
 		height: auto;
@@ -250,7 +268,7 @@ form input::placeholder {
 		height: auto;
 		padding: 14px 20px;
 	}
-
+	
 	.burger {
 		display: flex;
 		order: 2;
