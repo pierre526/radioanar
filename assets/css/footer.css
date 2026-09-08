@@ -43,12 +43,12 @@
 }
 
 .footer-container {
-	max-width: 1180px;
+	width: 80%;
 	margin: 0 auto;
 	padding: 56px 24px 32px;
 	display: grid;
 	grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
-	gap: 40px;
+	justify-content: space-around;
 }
 
 .footer-block {
@@ -174,7 +174,9 @@
 	margin: 0;
 	padding: 0;
 	display: flex;
-	gap: 10px;
+	justify-content: space-around;
+	width:70%;
+	margin: auto;
 }
 
 .footer-social a {
@@ -206,7 +208,9 @@
 .footer-social a:hover img {
 	filter: brightness(0) invert(1); /* icône en blanc au survol, sur fond rouge */
 }
-
+.footer-text-block {
+	text-align: center;
+}
 /* ---- Texte libre ------------------------------------------------------ */
 
 .footer-free-text {
